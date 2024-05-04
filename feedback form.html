@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      background-color:#c0fdff;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px; /* Increase font size for emphasis */
+      color: #000000; /* Dark gray color for better readability */
+      margin-top: 50px; /* Add some top margin for spacing */
+      text-transform: uppercase; /* Convert text to uppercase for a bold look */
+      letter-spacing: 2px; /* Add some letter spacing for better readability */
+      font-family: 'Arial', sans-serif; /* Use a common sans-serif font */
+    }
+  
+    form {
+      width: 90%; /* Adjust the form width as needed */
+      margin: 0 auto; /* Center the form horizontally */
+      padding: 20px; /* Add some padding for better spacing */
+      background-color:snow; /* Add a background color for better readability */
+      border-radius: 10px; /* Add some border radius for better appearance */
+    }
+
+    label {
+      display: inline-block; /* Change display to inline-block */
+      margin-bottom: 5px;
+      margin-right: 10px; 
+    }
+
+    input[type="text"],
+    select {
+      width: 100%; /* Make text inputs and select elements fill the entire width */
+      padding: 8px; /* Add some padding for better appearance */
+      margin-bottom: 10px; /* Add some bottom margin for better spacing */
+      border-radius: 5px; /* Add some border radius for better appearance */
+      border: 1px solid #ccc; /* Add a border for better visibility */
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+
+    input[type="submit"] {
+      width: 100%; /* Make the submit button fill the entire width */
+      padding: 10px; /* Add some padding for better appearance */
+      border: none; /* Remove default border */
+      background-color: #4CAF50; /* Green background color */
+      color: white; /* White text color */
+      border-radius: 5px; /* Add some border radius for better appearance */
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    
+
+    input[type="submit"]:hover {
+      background-color: #45a049; /* Darker green color on hover */
+    }
+
+    input[type="radio"] {
+      display: inline-block; /* Display radio buttons inline with labels */
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif 
+    }
+
+    img {
+      display: block; /* Make the image a block element */
+      margin: 0 auto; /* Center the image horizontally */
+    }
+
+    .message {
+      text-align: center; /* Center the message */
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>FEEDBACK FORM</h1>
+  <img src="logo.png" alt="CBIT LOGO.....!!!!" width="800" height="200"><br><br>
+
+  <div>
+    <form method="POST" name="google-sheet">
+      <h4><label for="name">Name:</label>
+      <input type="text" id="name" name="Name" value=""><br>
+
+      <label for="dept">Department:</label><br>
+      <select name="Department" id="Department">
+        <option value="">   </option>
+        <option value="Civil">Civil</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="ECE">ECE</option>
+        <option value="EEE">EEE</option>
+        <option value="CSE">CSE</option>
+        <option value="CSE(AI,ML)">CSE(AI,ML)</option>
+        <option value="CSE(IOT,CYBER SECURITY)">CSE(IOT,CYBER SECURITY)</option>
+        <option value="AI AND ML">AI AND ML</option>
+        <option value="IT">IT</option>
+        <option value="AI&DS">AI&DS</option>
+        <option value="Chemical">Chemical</option>
+        <option value="Biotechnology">Biotechnology</option>
+      </select><br>
+
+      <label for="year">Year:</label><br>
+      <select name="Year" id="year">
+        <option value="">   </option>
+        <option value="first">1st Year</option>
+        <option value="Second">2nd Year</option>
+        <option value="Third">3rd Year</option>
+        <option value="Fourth">4th Year</option>
+      </select><br>
+
+      <label>Category:</label><br>
+      <input type="radio" id="Infrastructure" name="Category" value="Infrastructure">
+      <label for="Infrastructure">Infrastructure</label><br>
+      <input type="radio" id="Management" name="Category" value="Management">
+      <label for="Management">Management</label><br>
+      <input type="radio" id="tech/res" name="Category" value="tech/res">
+      <label for="tech/res">Technology/Resources</label><br>
+      <input type="radio" id="Curriculum" name="Category" value="Curriculum">
+      <label for="Curriculum">Curriculum</label><br>
+      <input type="radio" id="Hygiene" name="Category" value="Hygiene">
+      <label for="Hygiene">Hygiene</label><br>
+      <input type="radio" id="Food" name="Category" value="Food">
+      <label for="Food">Canteen Food</label><br>
+      <input type="radio" id="Faculty" name="Category" value="Faculty">
+      <label for="Faculty">Faculty</label><br>
+      <input type="radio" id="Transport" name="Category" value="Transport">
+      <label for="Transport">Transport</label><br>
+      <input type="radio" id="Others" name="Category" value="Others">
+      <label for="Others">Others</label><br>
+
+      <label for="suggestion">Suggestion:</label><br>
+      <input type="text" id="suggestion" name="Suggestion" value=""><br>
+
+      <input type="submit" value="Submit" name="Submit"></h4>
+    </form>
+  </div>
+
+  <script>
+    /*Paste the URL of the script,after running on Appscript*/
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxq0nGaLv2uJ3_PtYGeWlXmJrL8azqt0h_K3ckfH-DL_trWOsp9Ri8TihiK1D1l3WKZ/exec'
+    const form = document.forms['google-sheet']
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      console.log('entered script')
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  <br>
+  <img src="images.png" alt="FEEDBACK!!!!!!" width="800" height="200"><br><br>
+
+
+</body>
+
+</html>
